@@ -3,6 +3,7 @@ package com.joaomoreira.despesathor_20.business;
 import com.joaomoreira.despesathor_20.infrastructure.entitys.Despesa;
 import com.joaomoreira.despesathor_20.infrastructure.repository.DespesaRepository;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service
 public class DespesaService {
@@ -42,5 +43,9 @@ public class DespesaService {
                 .id(despesaEntity.getId())
                 .build();
         repository.saveAndFlush(despesaAtualizada);
+    }
+
+    public List<Despesa> listarTodas(){
+        return repository.findAll();
     }
 }

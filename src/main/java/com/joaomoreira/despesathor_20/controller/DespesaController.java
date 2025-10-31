@@ -5,6 +5,7 @@ import com.joaomoreira.despesathor_20.infrastructure.entitys.Despesa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController
 @RequestMapping("/despesas")
@@ -19,9 +20,10 @@ public class DespesaController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Despesa> buscarDespesaPorId(@PathVariable Long id){
-        return ResponseEntity.ok(despesaService.buscarDespesaPorId(id));
+    @GetMapping
+    public ResponseEntity<List<Despesa>> listarTodasAsDespesas(){
+        List<Despesa> todasAsDespesas = despesaService.listarTodas();
+        return ResponseEntity.ok(todasAsDespesas);
     }
 
     @DeleteMapping("/{id}")
