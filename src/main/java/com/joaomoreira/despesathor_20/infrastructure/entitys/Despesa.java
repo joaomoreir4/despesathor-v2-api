@@ -5,6 +5,7 @@ import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 @Getter
 @Setter
@@ -29,5 +30,8 @@ public class Despesa {
     @Enumerated(EnumType.STRING)
     @Column(name = "categoria")
     private Categoria categoria;
+
+    @Column(name = "data")
+    private LocalDate data;
 
 }
