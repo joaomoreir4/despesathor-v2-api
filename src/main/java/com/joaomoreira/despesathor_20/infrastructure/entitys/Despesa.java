@@ -26,4 +26,8 @@ public class Despesa {
     @Column(name = "valor", precision = 19, scale = 2)
     private BigDecimal valor;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "categoria")
+    private Categoria categoria;
+
 }
