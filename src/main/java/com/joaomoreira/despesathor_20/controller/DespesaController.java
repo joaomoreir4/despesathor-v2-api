@@ -6,10 +6,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @RequestMapping("/despesas")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "*")
 public class DespesaController {
 
     private final DespesaService despesaService;
