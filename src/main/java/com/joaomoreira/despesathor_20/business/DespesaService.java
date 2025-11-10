@@ -1,5 +1,6 @@
 package com.joaomoreira.despesathor_20.business;
 
+import com.joaomoreira.despesathor_20.infrastructure.entitys.Categoria;
 import com.joaomoreira.despesathor_20.infrastructure.entitys.Despesa;
 import com.joaomoreira.despesathor_20.infrastructure.repository.DespesaRepository;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,12 @@ public class DespesaService {
         return repository.findById(id).orElseThrow(
                 () -> new RuntimeException("Despesa não encontrada!")
         );
+    }
+
+    public List<Despesa> pesquisarDespesas(
+            Integer ano, Integer mes, Categoria categoria
+    ) {
+        return repository.pesquisar(ano, mes, categoria);
     }
 
     public void deletarDespesaPorId(Long id){

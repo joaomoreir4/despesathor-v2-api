@@ -1,6 +1,6 @@
 package com.joaomoreira.despesathor_20.controller;
-
 import com.joaomoreira.despesathor_20.business.DespesaService;
+import com.joaomoreira.despesathor_20.infrastructure.entitys.Categoria;
 import com.joaomoreira.despesathor_20.infrastructure.entitys.Despesa;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +23,13 @@ public class DespesaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Despesa>> listarTodasAsDespesas(){
-        List<Despesa> todasAsDespesas = despesaService.listarTodas();
-        return ResponseEntity.ok(todasAsDespesas);
+    public ResponseEntity<List<Despesa>> listarTodasAsDespesas(
+            @RequestParam(required = false) Integer ano,
+            @RequestParam(required = false) Integer mes,
+            @RequestParam(required = false)Categoria categoria
+            ){
+        List<Despesa> despesas = despesaService.pesquisarDespesas(ano, mes, categoria);
+        return ResponseEntity.ok(despesas);
     }
 
     @DeleteMapping("/{id}")
