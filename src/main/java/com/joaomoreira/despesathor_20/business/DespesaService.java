@@ -3,6 +3,7 @@ package com.joaomoreira.despesathor_20.business;
 import com.joaomoreira.despesathor_20.infrastructure.entitys.Categoria;
 import com.joaomoreira.despesathor_20.infrastructure.entitys.Despesa;
 import com.joaomoreira.despesathor_20.infrastructure.repository.DespesaRepository;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -29,6 +30,10 @@ public class DespesaService {
             Integer ano, Integer mes, Categoria categoria
     ) {
         return repository.pesquisar(ano, mes, categoria);
+    }
+
+    public ResumoDTO resumir(Integer ano, Integer mes, Categoria categoria){
+        return repository.resumir(ano, mes, categoria);
     }
 
     public void deletarDespesaPorId(Long id){

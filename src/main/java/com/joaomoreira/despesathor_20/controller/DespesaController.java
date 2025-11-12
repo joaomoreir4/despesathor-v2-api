@@ -1,5 +1,6 @@
 package com.joaomoreira.despesathor_20.controller;
 import com.joaomoreira.despesathor_20.business.DespesaService;
+import com.joaomoreira.despesathor_20.business.ResumoDTO;
 import com.joaomoreira.despesathor_20.infrastructure.entitys.Categoria;
 import com.joaomoreira.despesathor_20.infrastructure.entitys.Despesa;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,17 @@ public class DespesaController {
             ){
         List<Despesa> despesas = despesaService.pesquisarDespesas(ano, mes, categoria);
         return ResponseEntity.ok(despesas);
+    }
+
+    @GetMapping("/resumo")
+    public ResponseEntity<ResumoDTO> listarResumo(
+            @RequestParam(required = false) Integer ano,
+            @RequestParam(required = false) Integer mes,
+            @RequestParam(required = false) Categoria categoria
+            ){
+        ResumoDTO resumo = despesaService.resumir(ano, mes, categoria);
+        return ResponseEntity.ok(resumo);
+
     }
 
     @DeleteMapping("/{id}")
